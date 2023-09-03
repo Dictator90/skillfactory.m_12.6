@@ -10,9 +10,9 @@ function getPartsFromFullname(string $fullName)
     ];
 }
 
-function getFullnameFromParts(array $partsName)
+function getFullnameFromParts($name, $surname, $patronomyc)
 {
-    return implode(' ', $partsName);
+    return "{$surname} {$name} {$patronomyc}";
 }
 
 function getShortName(string $fullName)
@@ -109,7 +109,7 @@ function randomFloat($min = 0, $max = 1)
 
 function getPerfectPartner(string $surname, string $name, string $patronomyc, array $personsArray)
 {
-    $fullName = getFullnameFromParts([normalizePersonName($surname), normalizePersonName($name), normalizePersonName($patronomyc)]);
+    $fullName = getFullnameFromParts(normalizePersonName($surname), normalizePersonName($name), normalizePersonName($patronomyc));
     $gender = getGenderFromName($fullName);
 
     $perfPartnerIndex = getPairFullNameByGender($gender, $personsArray);
